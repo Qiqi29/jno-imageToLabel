@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="./assets/style/widget.css">
+    <link rel="icon" href="./assets/icons/favicon.ico">
+    <title>JNO - 图像转 Label 工具</title>
+</head>
+
+<body>
+
+    <!-- 顶栏 -->
+    <div class="navbar">
+        <img class="logo" src="./assets/icons/logo.png" alt="">
+        <p class="title">JNO - 图像转Label工具</p>
+    </div>
+
+
+    <!-- 内容区域 -->
+    <div class="mainContainer">
+
+        <!-- 参数卡片 -->
+        <div class="card editCard">
+            <div class="cardTitle">原始图片</div>
+            <div class="cardContent">
+                <label>
+                    <input type="file" id="fileInput" accept="image/*">
+                    <div class="uploadImageBox">
+                        <p class="text">点击选择图片</p>
+                        <img id="uploadImage" src="" alt="">
+                    </div>
+                </label>
+            </div>
+            <div class="cardTitle">参数设置</div>
+            <div class="cardContent">
+
+                <div class="setting_item">
+                    <div class="text">
+                        <p class="title">图像宽度</p>
+                        <p class="value" id="imageWidthValue">0</p>
+                    </div>
+                    <input id="imageWidth" type="range" min="10" max="300" step="10">
+                </div>
+
+                <div class="cardTips">
+                    <p>越宽越清晰，同时也会导致转换后的文本数据也很大。</p>
+                </div>
+
+                <div class="setting_item">
+                    <div class="text">
+                        <p class="title">颜色转透明</p>
+                        <div class="switchBox">
+                            <label class="switch-label">
+                                <input id="enableTransparentColor" type="checkbox">
+                                <div class="slider">
+                                    <div class="slider-button"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting_item">
+                    <div class="text">
+                        <p class="title">透明颜色</p>
+                        <input id="transparentColor" type="color">
+                    </div>
+                </div>
+
+                <div class="setting_item">
+                    <div class="text">
+                        <p class="title">透明阈值</p>
+                        <p class="value" id="transparentValue">0</p>
+                    </div>
+                    <input id="transparentInput" type="range" min="0" max="100" step="1">
+                </div>
+
+                <div class="cardTips">
+                    <p>如果图片本身就是透明的，需要关闭颜色转透明。启用后，选择的颜色就会被替换为透明色，通过透明阈值滑条调整精细度。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 输出卡片 -->
+        <div class="card resultCard">
+            <div class="cardTitle">转换结果预览</div>
+            <div class="resultBox">
+                <!-- <canvas id="imageCanvas" width="580" height="580"></canvas> -->
+                <div id="resultImageBox">
+                    <div id="emptyText" class="emptyText">请先选择图片</div>
+                    <img id="resultImage" src="" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- 颜色卡片 -->
+        <div class="card colorCard">
+            <div class="cardTitle">颜色编辑</div>
+            <div class="cardContent">
+
+                <div class="colorBox">
+                    <div class="colorList" id="colorList">
+                        <!-- 选项由JS生成 -->
+                    </div>
+                </div>
+
+                <div class="setting_item colorEditBox">
+                    <div class="text">
+                        <p class="title">修改颜色</p>
+                        <input id="editColor" type="color">
+                    </div>
+                </div>
+
+                <div class="cardTips">
+                    <p>这里的颜色排序与游戏内一致，需要在游戏内对应的位置来修改标签的颜色。</p>
+                </div>
+
+                <!-- 复制代码按钮 -->
+                <button id="copyText" class="defaultButton primaryButton">复制代码</button>
+                
+                <!-- 使用方法按钮 -->
+                <button id="helpButton" class="defaultButton">使用方法</button>
+                
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 复制提示 -->
+    <div id="copyTips">
+        <p>已复制代码到剪切板中</p>
+    </div>
+
+
+    <!-- 使用方法弹窗 -->
+    <div id="helpDialog">
+        <div class="box">
+            <div class="titleBox">
+                <p class="title">使用方法</p>
+                <div id="helpCloseButton">X</div>
+            </div>
+            <div class="contentBox">
+                <p class="title">1. 粘贴代码</p>
+                <p class="text">把复制的代码粘贴到 Lable 零件的 Text 输入框中。</p>
+
+                <p class="title">2. 设置 Label 零件的属性</p>
+                <p class="text">Horizontal Anchor 属性设置为 Left。</p>
+                <p class="text">Gradient 属性设置为 Vertical。</p>
+                
+                <p class="title">3. 调整图像大小</p>
+                <p class="text">通过 Font Size 属性无法调整图像大小，需要在 TINKER PANEL 内通过 Part Scale 调整图像大小。</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="./assets/script/script.js"></script>
+    
+</body>
+
+</html>

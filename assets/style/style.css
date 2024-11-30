@@ -1,0 +1,362 @@
+:root {
+    --theme-color: #00B7ED;
+    --theme-color-h: #00A1F2;
+    --theme-color-a: #006EA6;
+    --color-bg: #121518;
+    --color-bg-2: #1C2226;
+    --color-bg-3: #2E353D;
+    --text-color-1: #FAFAFA;
+    --text-color-2: #ABB4BE;
+    --text-color-3: #7D8494;
+    --text-color-4: #676d7a;
+    --hover-color: #3D4955;
+    --border-color: #2E3138;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--text-color-1);
+    font-size: 14px;
+    min-width: 300px;
+}
+
+img[src=""] {
+    display: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="color"] {
+    border: 2px solid var(--color-bg-3);
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: 0;
+}
+
+
+
+
+/* ========== 顶栏 ========== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 16px;
+    background: var(--color-bg);
+    border-bottom: 3px solid #1C2226;
+    z-index: 100;
+}
+
+.navbar .logo {
+    height: 40px;
+}
+
+.navbar .title {
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+
+
+
+/* ========== 主内容区域 ========== */
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    height: calc(100vh - 60px);
+}
+
+
+
+
+/* ========== 内容卡片 ========== */
+
+.card {
+    padding: 4px 4px 16px 4px;
+    background: var(--color-bg-2);
+}
+.cardContent {
+    padding: 0 14px;
+}
+.cardTitle {
+    padding: 0 10px;
+    margin-bottom: 16px;
+    height: 30px;
+    line-height: 30px;
+    background: var(--color-bg-3);
+    color: var(--text-color-2);
+}
+.cardSubTitle {
+    margin: 20px 0 10px 0px;
+    color: var(--text-color-2);
+    font-size: 14px;
+}
+.cardTips {
+    margin-top: 5px;
+    padding: 6px 10px;
+    background: var(--color-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-4);
+    font-size: 13px;
+}
+
+
+
+
+/* ========== 参数设置区域 ========== */
+
+.editCard {
+    width: 280px;
+    margin-right: 15px;
+}
+
+/* 选择图片区域 */
+.uploadImageBox {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    border: 2px dashed var(--hover-color);
+    color: var(--text-color-3);
+    cursor: pointer;
+}
+.uploadImageBox:hover {
+    border-color: var(--theme-color);
+}
+#uploadImage {
+    position: absolute; top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+
+
+/* ========== 颜色设置区域 ========== */
+
+.colorCard {
+    width: 240px;
+    margin-left: 15px;
+}
+
+/* 颜色选项 */
+.colorBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.colorList {
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    gap: 10px;
+}
+.colorList .colorItem {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #1C2226;
+}
+.colorList .colorItem:hover {
+    box-shadow: 
+        -13px -13px 0 -11.5px var(--hover-color),
+        13px -13px 0 -11.5px var(--hover-color),
+        -13px 13px 0 -11.5px var(--hover-color),
+        13px 13px 0 -11.5px var(--hover-color);
+}
+.colorList .colorItem.active {
+    box-shadow: 
+        -13px -13px 0 -11.5px var(--theme-color),
+        13px -13px 0 -11.5px var(--theme-color),
+        -13px 13px 0 -11.5px var(--theme-color),
+        13px 13px 0 -11.5px var(--theme-color);
+}
+
+/* 颜色编辑 */
+.colorEditBox {
+    margin-bottom: 10px !important;
+}
+
+/* 复制代码按钮 */
+#copyText {
+    margin: 30px 0 20px 0;
+}
+
+/* 拷贝代码的提示文本 */
+#copyTips {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000C0;
+    padding: 14px 20px;
+}
+
+
+
+
+
+
+/* ========== 转换结果区域 ========== */
+
+.resultCard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.resultBox {
+    margin: 5px 16px;
+    flex: 1;
+}
+
+/* 空状态文本 */
+.resultBox .emptyText {
+    color: var(--text-color-3);
+}
+
+
+/* 结果图像 */
+#resultImageBox {
+    border: 2px solid var(--border-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#resultImage {
+    image-rendering: pixelated;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 画布 */
+/* #imageCanvas {
+    width: 100%;
+    height: 70%;
+    border: 2px solid var(--border-color);
+} */
+
+
+
+
+
+
+
+/* 竖屏适配 */
+@media screen and (max-width: 1000px) {
+    .mainContainer {
+        flex-direction: column;
+        height: 100%;
+    }
+    .editCard {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+    .colorCard {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+    .resultCard {
+        width: 100%;
+    }
+    #resultImage {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+    }
+    /* #imageCanvas {
+        width: 300px;
+    }  */
+}
+
+
+
+
+/* 使用方法弹窗 */
+#helpDialog {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000060;
+    z-index: 1000;
+}
+#helpDialog .box {
+    position: relative;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 50px);
+    padding: 14px 24px;
+    max-width: 700px;
+    height: 450px;
+    background-color: #161717;
+    border: 1px solid var(--border-color);
+}
+#helpDialog .titleBox {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-color-3);
+    font-weight: bold;
+}
+#helpDialog .contentBox .title {
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+    color: var(--text-color-2);
+}
+#helpDialog .contentBox .text {
+    margin: 3px 0;
+    color: var(--text-color-3);
+}
+
+
+#helpCloseButton {
+    position: absolute;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 33px;
+    background-color: var(--color-bg-3);
+    font-size: 28px;
+    user-select: none;
+    cursor: pointer;
+}
+#helpCloseButton:hover {
+    background-color: var(--hover-color);
+}
