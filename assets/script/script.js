@@ -81,7 +81,7 @@ function updateUI() {
     imageWidthValue.innerText = imageWidth
     // 透明阈值滑条
     transparentInput.value = transThreshold
-    const transValue = mapRange(transThreshold, 0, 100, 0, 100)
+    const transValue = mapRange(transThreshold, 0, 150, 0, 100)
     transparentInput.style.backgroundSize = transValue + "% 100%"
     transparentValue.innerText = transThreshold
 }
@@ -202,6 +202,7 @@ function onTransition() {
         resultImage.src = newImgData.toDataURL()
         resultImage.style.display = 'block'
         emptyText.style.display = 'none'
+
     }
 }
 
@@ -209,6 +210,14 @@ function onTransition() {
 
 // 点击复制代码按钮
 copyTextButton.addEventListener('click', function () {
+    generateResult()
+    copyText(resultCode)
+})
+
+
+
+// 生成转换后的代码
+function generateResult() {
     if (imgData == null) return
     
     resultCode = `<size=0.5><line-height=0.298>`
@@ -246,10 +255,9 @@ copyTextButton.addEventListener('click', function () {
         }
         index += 1
     }
-    console.log(resultCode)
-    // 复制代码到剪切板上
-    copyText(resultCode)
-})
+}
+
+
 
 
 
@@ -355,6 +363,16 @@ helpButton.addEventListener('click', function () {
 
 helpCloseButton.addEventListener('click', function () {
     helpDialog.style.display = 'none'
+})
+
+
+
+
+// 点击无法复制按钮
+document.getElementById('noCopyButton').addEventListener('click', function () {
+    generateResult()
+    localStorage.setItem('resultCode', resultCode)
+    window.location.href = 'copy.html'
 })
 
 

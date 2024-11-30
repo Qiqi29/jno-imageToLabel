@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/color.css">
     <link rel="stylesheet" href="./assets/style/style.css">
     <link rel="stylesheet" href="./assets/style/widget.css">
     <link rel="icon" href="./assets/icons/favicon.ico">
@@ -46,7 +47,7 @@
                 </div>
 
                 <div class="cardTips">
-                    <p>越宽越清晰，同时也会导致转换后的文本数据也很大。</p>
+                    <p>越宽越清晰，同时转换后的文本数据也很大。（数据过大会导致显示不全）</p>
                 </div>
 
                 <div class="setting_item">
@@ -75,7 +76,7 @@
                         <p class="title">透明阈值</p>
                         <p class="value" id="transparentValue">0</p>
                     </div>
-                    <input id="transparentInput" type="range" min="0" max="100" step="1">
+                    <input id="transparentInput" type="range" min="0" max="150" step="1">
                 </div>
 
                 <div class="cardTips">
@@ -119,11 +120,12 @@
                     <p>这里的颜色排序与游戏内一致，需要在游戏内对应的位置来修改标签的颜色。</p>
                 </div>
 
-                <!-- 复制代码按钮 -->
+                <!-- 按钮 -->
                 <button id="copyText" class="defaultButton primaryButton">复制代码</button>
                 
-                <!-- 使用方法按钮 -->
                 <button id="helpButton" class="defaultButton">使用方法</button>
+
+                <button id="noCopyButton" class="defaultButton">无法复制</button>
                 
             </div>
         </div>
@@ -149,8 +151,9 @@
                 <p class="text">把复制的代码粘贴到 Lable 零件的 Text 输入框中。</p>
 
                 <p class="title">2. 设置 Label 零件的属性</p>
-                <p class="text">Horizontal Anchor 属性设置为 Left。</p>
-                <p class="text">Gradient 属性设置为 Vertical。</p>
+                <p class="text">- Horizontal Anchor（水平锚点）设置为 Left。</p>
+                <p class="text">- Vertical Anchor（垂直锚点）设置为 Top。</p>
+                <p class="text">- Gradient（梯度）设置为 Vertical。（解决显示为字符 'a'）</p>
                 
                 <p class="title">3. 调整图像大小</p>
                 <p class="text">通过 Font Size 属性无法调整图像大小，需要在 TINKER PANEL 内通过 Part Scale 调整图像大小。</p>
